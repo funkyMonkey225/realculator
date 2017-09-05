@@ -46,7 +46,7 @@ class Numbers extends Component {
             </tr>
             <tr>
                 <td colSpan="2" onClick={this._numberOperationHandler}>0</td>
-                <td>.</td>
+                <td onClick={this._numberOperationHandler}>.</td>
                 <td onClick={this._resultHandler}>=</td>
             </tr>
         </tbody>
