@@ -15,7 +15,6 @@ class Numbers extends Component {
     }
 
     _numberOperationHandler = (e) => {
-        console.log(e.target.innerText);
         this.props.numberHandler(e.target.innerText);
     }
 
