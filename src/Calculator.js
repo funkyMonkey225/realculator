@@ -29,6 +29,7 @@ class Calculator extends Component {
     _clearHandler = (value) => {
         this.setState({
             display: "0",
+            current: "",
             total: 0
         })
     }

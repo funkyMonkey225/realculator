@@ -22,8 +22,10 @@ class Numbers extends Component {
     return (
         <tbody>
             <tr>
-                <td colSpan="3" onClick={this._clearHandler}>clear</td>
-                <td onClick={this._operationHandler}>/</td>
+                <td onClick={this._clearHandler}>AC</td>
+                <td>+/-</td>
+                <td><img src="back.png" alt="back" /></td>
+                <td onClick={this._numberOperationHandler}>/</td>
             </tr>
             <tr>
                 <td onClick={this._numberOperationHandler}>7</td>
