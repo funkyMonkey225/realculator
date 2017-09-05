@@ -34,8 +34,6 @@ class Calculator extends Component {
             current = "0"
         }
 
-        console.log(total);
-
         this.setState ({
             display: display,
             current: current,
@@ -55,6 +53,46 @@ class Calculator extends Component {
         })
     }
 
+    _negPosHandler = (value) => {
+        var {display, total, current} = this.state;
+        let arr = display.split(' ');
+        let currarr = current.split(' ');
+        let num = Number(arr[arr.length - 1]);
+        let elem = arr[arr.length - 1];
+        if (elem !== "" && !(isNaN(num))) {
+            if (num < 0) {
+                num = Math.abs(num);
+
+            } else if (num > 0) {
+                num = -num;
+            }
+
+            currarr[currarr.length - 1] = num;
+            arr[arr.length - 1] = num;
+            current = currarr.join(' ');
+            display = arr.join(' ');
+
+            if (arr.length === 1) {
+                total = num;
+            }
+
+        } else {
+            if (elem === "-") {
+                display = display.slice(0, -1);
+                current = current.slice(0, -1);
+            } else {
+                display = display + "-";
+                current = current + "-";
+            }       
+        }
+
+        this.setState({
+            display: display,
+            current: current,
+            total: total
+        })
+    }
+
     _clearHandler = (value) => {
         this.setState({
             display: "0",
@@ -70,10 +108,12 @@ class Calculator extends Component {
             total = Number(val);
             display = val;
         } else if (val === "x" || val === "-" || val === "/" || val === "+") {
-            total = utils.operation(current, total);
-            current = String(total);
-            current = current + " " + val + " ";
-            display = display + " " + val + " "; 
+            if (display[display.length - 1] !== " ") {
+                total = utils.operation(current, total);
+                current = String(total);
+                current = current + " " + val + " ";
+                display = display + " " + val + " "; 
+            }
         } else {
             current = current + val;
             display = display + val;
@@ -95,6 +135,7 @@ class Calculator extends Component {
             clearHandler={this._clearHandler}
             resultHandler={this._resultHandler}
             backHandler={this._backHandler}
+            negPosHandler={this._negPosHandler}
         />
     </table>
     );

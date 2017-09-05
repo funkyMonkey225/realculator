@@ -5,6 +5,11 @@ class Numbers extends Component {
     constructor(props) {
         super(props);
     }
+
+    _negPosHandler = (e) => {
+        this.props.negPosHandler(e.target.innerText);
+    }
+
     _backHandler = (e) => {
         this.props.backHandler(e.target.innerText);
     }
@@ -25,7 +30,7 @@ class Numbers extends Component {
         <tbody>
             <tr>
                 <td onClick={this._clearHandler}>clr</td>
-                <td>+/-</td>
+                <td onClick={this._negPosHandler}>+/-</td>
                 <td onClick={this._backHandler}><img src="back.png" alt="back" /></td>
                 <td onClick={this._numberOperationHandler}>/</td>
             </tr>
