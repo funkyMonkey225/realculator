@@ -12,19 +12,25 @@ class Calculator extends Component {
         }
     }
 
+    _resultHandler = (value) => {
+        console.log(value);
+    }
+
     _clearHandler = (value) => {
         this.setState({
-            display: "0"
+            display: "0",
+            total: 0
         })
     }
 
-    _numberHandler = (num) => {
-        var newDisplay = this.state.display;
-        if (this.state.display === "0") {
-            newDisplay = num;
+    _numberOperationHandler = (val) => {
+        var {display: newDisplay, num: newNum} = this.state;
+        if (newDisplay === "0" && val !== "x" && val !== "-" && val !== "/" && val !== "+") {
+            newDisplay = val;
         } else {
-            newDisplay = newDisplay + num;
+            newDisplay = newDisplay + val;
         }
+
         this.setState({
             display: newDisplay
         })
@@ -35,8 +41,9 @@ class Calculator extends Component {
     <table>
         <Display display={this.state.display}/>
         <Numbers 
-            numberHandler={this._numberHandler}
+            numberHandler={this._numberOperationHandler}
             clearHandler={this._clearHandler}
+            resultHandler={this._resultHandler}
         />
     </table>
     );
