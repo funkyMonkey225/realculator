@@ -7,7 +7,7 @@ class Numbers extends Component {
     }
 
     _clearHandler = (e) => {
-        console.log(e.target.innerText);
+        this.props.clearHandler(e.target.innerText);
     }
 
     _numberHandler = (e) => {
