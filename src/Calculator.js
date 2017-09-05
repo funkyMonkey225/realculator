@@ -22,6 +22,10 @@ class Calculator extends Component {
         } else {
             display = display.slice(0, -1);
             current = current.slice(0, -1);
+            let arr = current.split(" ");
+            if (arr.length === 1) {
+                total = Number(display);
+            }
         }
 
         if (display === "") {
@@ -29,6 +33,8 @@ class Calculator extends Component {
             display = "0";
             current = "0"
         }
+
+        console.log(total);
 
         this.setState ({
             display: display,

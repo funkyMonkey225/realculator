@@ -24,7 +24,7 @@ class Numbers extends Component {
     return (
         <tbody>
             <tr>
-                <td onClick={this._clearHandler}>AC</td>
+                <td onClick={this._clearHandler}>clr</td>
                 <td>+/-</td>
                 <td onClick={this._backHandler}><img src="back.png" alt="back" /></td>
                 <td onClick={this._numberOperationHandler}>/</td>
