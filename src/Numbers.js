@@ -5,7 +5,9 @@ class Numbers extends Component {
     constructor(props) {
         super(props);
     }
-
+    _backHandler = (e) => {
+        this.props.backHandler(e.target.innerText);
+    }
     _resultHandler = (e) => {
         this.props.resultHandler(e.target.innerText);
     }
@@ -24,7 +26,7 @@ class Numbers extends Component {
             <tr>
                 <td onClick={this._clearHandler}>AC</td>
                 <td>+/-</td>
-                <td><img src="back.png" alt="back" /></td>
+                <td onClick={this._backHandler}><img src="back.png" alt="back" /></td>
                 <td onClick={this._numberOperationHandler}>/</td>
             </tr>
             <tr>

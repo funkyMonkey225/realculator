@@ -14,6 +14,29 @@ class Calculator extends Component {
         }
     }
 
+    _backHandler = (value) => {
+        var {display, current, total} = this.state;
+        if (display[display.length -1] === " ") {
+            display = display.slice(0, -3);
+            current = current.slice(0, -3);
+        } else {
+            display = display.slice(0, -1);
+            current = current.slice(0, -1);
+        }
+
+        if (display === "") {
+            total = 0;
+            display = "0";
+            current = "0"
+        }
+
+        this.setState ({
+            display: display,
+            current: current,
+            total: total
+        })
+    }
+
     _resultHandler = (value) => {
         var {display, total, current} = this.state;
         total = utils.operation(current, total);
@@ -65,6 +88,7 @@ class Calculator extends Component {
             numberHandler={this._numberOperationHandler}
             clearHandler={this._clearHandler}
             resultHandler={this._resultHandler}
+            backHandler={this._backHandler}
         />
     </table>
     );
