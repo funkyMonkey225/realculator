@@ -58,24 +58,24 @@ class Calculator extends Component {
     }
 
     _numberOperationHandler = (val) => {
-        var {display: newDisplay, current: newCurrent, total} = this.state;
-        if (newDisplay === "0" && val !== "x" && val !== "-" && val !== "/" && val !== "+") {
-            newCurrent = val;
+        var {display, current, total} = this.state;
+        if (display === "0" && val !== "x" && val !== "-" && val !== "/" && val !== "+") {
+            current = val;
             total = Number(val);
-            newDisplay = val;
+            display = val;
         } else if (val === "x" || val === "-" || val === "/" || val === "+") {
-            total = utils.operation(newCurrent, total);
-            newCurrent = String(total);
-            newCurrent = newCurrent + " " + val + " ";
-            newDisplay = newDisplay + " " + val + " "; 
+            total = utils.operation(current, total);
+            current = String(total);
+            current = current + " " + val + " ";
+            display = display + " " + val + " "; 
         } else {
-            newCurrent = newCurrent + val;
-            newDisplay = newDisplay + val;
+            current = current + val;
+            display = display + val;
         }
 
         this.setState({
-            current: newCurrent,
-            display: newDisplay,
+            current: current,
+            display: display,
             total: total
         })
     }

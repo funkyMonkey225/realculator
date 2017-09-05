@@ -1,7 +1,7 @@
 const operation = (str, total) => {
     let arr = str.split(' ');
     if (arr.length < 3) {
-        return total;
+        return arr[0];
     } else {
         let num1 = Number(arr[0]);
         let num2 = Number(arr[2]);
